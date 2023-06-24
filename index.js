@@ -32,8 +32,8 @@ function HandleFirstRequest(req,res){
   // console.log(req.query.counter2);
   // console.log(req.query.counter3);
   
-    var TotalSum=CalculatedSum(counter);
-      console.log(TotalSum);
+    var TotalSums=CalculatedSum(counter);
+      console.log(TotalSums);
  
   
    //res.send("the sum is "+answer);
