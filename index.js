@@ -1,3 +1,4 @@
+
 const express = require('express')
 const app = express()
 const bodyparser=require('body-parser');
@@ -18,11 +19,19 @@ app.use(bodyparser.json())
 //program for the sum
 function CalculatedSum(counter){
   var sum=0;
-  for(var i=0;i<counter;i++){
+  for(var i=0;i<=counter;i++){
     sum=sum+i;
   }
   return sum;
 }
+function CalculatedMul(counter){
+  var Mul=1;
+  for(var i=1;i<=counter;i++){
+    Mul=Mul*i;
+  }
+  return Mul;
+}
+
 
 function HandleFirstRequest(req,res){
   console.log(req.body);
@@ -33,17 +42,28 @@ function HandleFirstRequest(req,res){
   // console.log(req.query.counter3);
   
     var TotalSums=CalculatedSum(counter);
+    var TotalMul=CalculatedMul(counter);
       console.log(TotalSums);
  
   
    //res.send("the sum is "+answer);
    var answerObject={
-    sum: TotalSum
+    sum: TotalSums,
+    Mul:TotalMul
    }
 
    //var answer="the sum is "+TotalSum;
     res.status(200).send(answerObject);
 }
+// var obj={
+//   "abs":"bcg",
+//   "alam":"zia"
+
+// }
+function reqPage(req,res){
+  res.sendFile(__dirname+"/index.html");
+}
+app.get('/', reqPage);
 app.post('/', HandleFirstRequest);
 function HandlePostRequest(){
   console.log("hello alam ");
